@@ -37,6 +37,19 @@ vim.keymap.set('t', '<C-right>', function()
   return require('smart-splits').resize_right(1)
 end, { desc = 'Resize window to right' })
 
+vim.keymap.set('n', '<leader><leader>h', function()
+  return require('smart-splits').swap_buf_left()
+end, { desc = 'Swap buffer to left' })
+vim.keymap.set('n', '<leader><leader>j', function()
+  return require('smart-splits').swap_buf_down()
+end, { desc = 'Swap buffer down' })
+vim.keymap.set('n', '<leader><leader>k', function()
+  return require('smart-splits').swap_buf_up()
+end, { desc = 'Swap buffer up' })
+vim.keymap.set('n', '<leader><leader>l', function()
+  return require('smart-splits').swap_buf_right()
+end, { desc = 'Swap buffer to right' })
+
 return {
   'mrjones2014/smart-splits.nvim',
 }
