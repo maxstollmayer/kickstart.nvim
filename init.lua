@@ -648,10 +648,23 @@ require('lazy').setup {
           --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
 
-          -- Manually trigger a completion from nvim-cmp.
-          --  Generally you don't need this, because nvim-cmp will display
-          --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
+          -- Toggle completion menu from nvim-cmp.
+          ['<C-x>'] = cmp.mapping {
+            i = function()
+              if cmp.visible() then
+                cmp.abort()
+              else
+                cmp.complete()
+              end
+            end,
+            c = function()
+              if cmp.visible() then
+                cmp.close()
+              else
+                cmp.complete()
+              end
+            end,
+          },
 
           -- Think of <C-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
