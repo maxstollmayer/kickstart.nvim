@@ -150,11 +150,6 @@ vim.opt.scrolloff = 10
 
 -- PERSONAL SETTINGS
 
--- define default tab size
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
 -- terminal window title
 vim.opt.title = true
 vim.opt.titlestring = [[nvim: %t in %{fnamemodify(getcwd(), ':~:.')}]]
@@ -427,6 +422,8 @@ require('lazy').setup {
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
+
+  { 'folke/neodev.nvim', opts = {} },
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
