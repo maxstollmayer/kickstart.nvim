@@ -30,5 +30,11 @@ return {
     'lewis6991/gitsigns.nvim',
     'nvim-tree/nvim-web-devicons',
   },
-  opts = {},
+  config = function()
+    require('barbar').setup {
+      sidebar_filetypes = {
+        NvimTree = true,
+      },
+    }
+  end,
 }

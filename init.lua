@@ -95,6 +95,13 @@ vim.g.maplocalleader = ' '
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Disable netrw in favor of nvim-tee, see custom/plugins/nvim-tree.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Enable 24 bit colors
+vim.opt.termguicolors = true
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
@@ -150,11 +157,14 @@ vim.opt.scrolloff = 10
 
 -- PERSONAL SETTINGS
 
+-- define default tab size
+-- vim.opt.tabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+
 -- terminal window title
 vim.opt.title = true
 vim.opt.titlestring = [[nvim: %t in %{fnamemodify(getcwd(), ':~:.')}]]
-
--- open split terminal
 
 -- set powershell as default shell
 vim.opt.shell = 'pwsh'
@@ -173,8 +183,8 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', ',d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', '.d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -200,14 +210,17 @@ vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move focus to the left window' 
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move focus to the upper window' })
-vim.keymap.set('i', '<C-h>', '<C-\\><C-N>C-w>h', { desc = 'Move focus to the left window' })
-vim.keymap.set('i', '<C-l>', '<C-\\><C-N>C-w>l', { desc = 'Move focus to the right window' })
-vim.keymap.set('i', '<C-j>', '<C-\\><C-N>C-w>j', { desc = 'Move focus to the lower window' })
-vim.keymap.set('i', '<C-k>', '<C-\\><C-N>C-w>k', { desc = 'Move focus to the upper window' })
-vim.keymap.set('t', '<C-h>', '<C-\\><C-N>C-w>h', { desc = 'Move focus to the left window' })
-vim.keymap.set('t', '<C-l>', '<C-\\><C-N>C-w>l', { desc = 'Move focus to the right window' })
-vim.keymap.set('t', '<C-j>', '<C-\\><C-N>C-w>j', { desc = 'Move focus to the lower window' })
-vim.keymap.set('t', '<C-k>', '<C-\\><C-N>C-w>k', { desc = 'Move focus to the upper window' })
+vim.keymap.set('i', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Move focus to the left window' })
+vim.keymap.set('i', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Move focus to the right window' })
+vim.keymap.set('i', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Move focus to the lower window' })
+vim.keymap.set('i', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Move focus to the upper window' })
+vim.keymap.set('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Move focus to the left window' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Move focus to the right window' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Move focus to the lower window' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Move focus to the upper window' })
+vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { desc = 'Switch to normal mode' })
+vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Switch to normal mode' })
+vim.keymap.set('i', 'jk', '<C-\\><C-n>', { desc = 'Switch to normal mode' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
