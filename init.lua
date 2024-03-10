@@ -750,9 +750,6 @@ require('lazy').setup {
       -- "gS" - toggle split/join
       require('mini.splitjoin').setup()
 
-      -- Align text interactively
-      -- require('mini.align').setup()
-
       -- Move any selection in any direction
       require('mini.move').setup()
 
@@ -764,6 +761,8 @@ require('lazy').setup {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     config = function()
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
@@ -774,6 +773,15 @@ require('lazy').setup {
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<C-s>',
+            node_incremental = '<C-s>',
+            scope_incremental = false,
+            node_decremental = '<bs>',
+          },
+        },
       }
 
       -- There are additional nvim-treesitter modules that you can use to interact
