@@ -3,7 +3,7 @@ return {
   dependencies = { 'nvim-treesitter' },
   config = function()
     require('treesitter-context').setup {
-      max_lines = 5,
+      max_lines = 3,
     }
 
     vim.keymap.set('n', 'cu', function()
