@@ -700,9 +700,21 @@ require('lazy').setup {
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
     'catppuccin/nvim',
+    name = 'catppuccin',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
+      require('catppuccin').setup {
+        integrations = {
+          barbar = true,
+          fidget = true,
+          mason = true,
+          mini = { enabled = true, indentscope_color = 'surface0' },
+          treesitter_context = true,
+          lsp_trouble = true,
+          which_key = true,
+        },
+      }
       -- Load the colorscheme here
       vim.cmd.colorscheme 'catppuccin-mocha'
 
@@ -752,6 +764,12 @@ require('lazy').setup {
 
       -- Move any selection in any direction
       require('mini.move').setup()
+
+      -- Visalize and work with indent scope
+      require('mini.indentscope').setup {
+        symbol = '▏',
+        draw = { animation = require('mini.indentscope').gen_animation.none() },
+      }
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
