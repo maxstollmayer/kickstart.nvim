@@ -8,6 +8,10 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Compatability fix for pyenv
+vim.g.python3_host_prog = 'C:\\Users\\maxst\\.pyenv\\pyenv-win\\versions\\3.9.13\\python.exe'
+vim.cmd [[let $PYENV_ROOT = "C:\\Users\\maxst\\.pyenv\\pyenv-win\\"]]
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -72,9 +76,9 @@ vim.opt.scrolloff = 10
 -- PERSONAL SETTINGS
 
 -- define default tab size
--- vim.opt.tabstop = 4
--- vim.opt.shiftwidth = 4
--- vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- terminal window title
 vim.opt.title = true
@@ -498,7 +502,13 @@ require('lazy').setup {
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
+        ruff_lsp = {
+          settings = { organizeImports = false },
+          on_attach = function(client)
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -550,6 +560,10 @@ require('lazy').setup {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
+        'pyright',
+        'ruff_lsp',
+        'black',
+        'isort',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -579,7 +593,7 @@ require('lazy').setup {
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -786,7 +800,7 @@ require('lazy').setup {
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'python', 'rust', 'haskell' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
