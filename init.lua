@@ -854,5 +854,17 @@ require('lazy').setup {
   { import = 'custom.plugins' },
 }
 
+vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Auto select virtualenv when neovim opens',
+  pattern = '*',
+  callback = function()
+    local venv = vim.fn.finddir('.venv', vim.fn.getcwd() .. ';')
+    if venv ~= '' then
+      require('venv-selector').retrieve_from_cache()
+    end
+  end,
+  once = true,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -7,5 +7,7 @@ return {
   event = 'VeryLazy',
   opts = {
     name = '.venv',
+    search = false,
+    auto_refresh = true,
   },
 }
