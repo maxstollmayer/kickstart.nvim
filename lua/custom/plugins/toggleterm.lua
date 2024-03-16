@@ -2,7 +2,7 @@ return {
   'akinsho/toggleterm.nvim',
   opts = {},
   config = function()
-    require('toggleterm').setup()
+    require('toggleterm').setup { start_in_insert = true }
 
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new { cmd = 'lazygit', direction = 'float', hidden = true }
