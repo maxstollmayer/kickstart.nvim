@@ -505,9 +505,9 @@ require('lazy').setup {
         pyright = {},
         ruff_lsp = {
           settings = { organizeImports = false },
-          on_attach = function(client)
+          --[[ on_attach = function(client)
             client.server_capabilities.hoverProvider = false
-          end,
+          end, ]]
         },
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
