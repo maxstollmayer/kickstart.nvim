@@ -772,6 +772,15 @@ require('lazy').setup {
         return ''
       end
 
+      -- Navigate and manipulate file system
+      require('mini.files').setup()
+      local minifiles_toggle = function()
+        if not MiniFiles.close() then
+          MiniFiles.open()
+        end
+      end
+      vim.keymap.set('n', '-', minifiles_toggle, { desc = 'Open parent directory' })
+
       -- Split and join arguments
       -- "gS" - toggle split/join
       require('mini.splitjoin').setup()
