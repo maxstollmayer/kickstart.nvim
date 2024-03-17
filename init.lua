@@ -773,7 +773,10 @@ require('lazy').setup {
       end
 
       -- Navigate and manipulate file system
-      require('mini.files').setup()
+      require('mini.files').setup { mappings = {
+        synchronize = 'w',
+        go_in_plus = '<cr>',
+      } }
       local minifiles_toggle = function()
         if not MiniFiles.close() then
           MiniFiles.open()
