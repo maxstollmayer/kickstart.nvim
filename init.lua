@@ -9,7 +9,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Compatability fix for pyenv
-vim.g.python3_host_prog = 'C:\\Users\\maxst\\.pyenv\\pyenv-win\\versions\\3.9.13\\python.exe'
+vim.g.python3_host_prog = 'C:\\Users\\maxst\\.pyenv\\pyenv-win\\versions\\3.10.11\\python.exe'
 vim.cmd [[let $PYENV_ROOT = "C:\\Users\\maxst\\.pyenv\\pyenv-win\\"]]
 
 -- [[ Setting options ]]
