@@ -12,9 +12,9 @@ return {
 
     vim.keymap.set('n', '<leader>gg', '<cmd>lua _Lazygit_toggle()<CR>', { desc = 'Toggle lazygit' })
 
-    vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-    vim.keymap.set('n', '<leader>tj', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Toggle terminal below' })
-    vim.keymap.set('n', '<leader>tl', '<cmd>ToggleTerm size=40 direction=vertical<CR>', { desc = 'Toggle terminal to right' })
-    vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Toggle floating terminal' })
+    vim.keymap.set('n', '<C-ö>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+    -- vim.keymap.set('n', '<leader>tj', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Toggle terminal below' })
+    -- vim.keymap.set('n', '<leader>tl', '<cmd>ToggleTerm size=40 direction=vertical<CR>', { desc = 'Toggle terminal to right' })
+    -- vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Toggle floating terminal' })
   end,
 }
