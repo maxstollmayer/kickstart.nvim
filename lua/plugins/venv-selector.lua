@@ -1,16 +1,16 @@
 return {
-  'linux-cultist/venv-selector.nvim',
-  dependencies = {
-    'neovim/nvim-lspconfig',
-    'nvim-telescope/telescope.nvim',
-  },
-  event = 'VeryLazy',
-  opts = {
-    name = '.venv',
-    -- search = false,
-    parents = 0,
-    auto_refresh = true,
-  },
+	"linux-cultist/venv-selector.nvim",
+	dependencies = {
+		"neovim/nvim-lspconfig",
+		"nvim-telescope/telescope.nvim",
+	},
+	event = "VeryLazy",
+	opts = {
+		name = ".venv",
+		-- search = false,
+		parents = 0,
+		auto_refresh = true,
+	},
 }
 -- vim.api.nvim_create_autocmd('VimEnter', {
 --   desc = 'Auto select virtualenv when neovim opens',
@@ -24,4 +24,3 @@ return {
 --   end,
 --   once = true,
 -- })
-
